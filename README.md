@@ -23,15 +23,15 @@ mv List/header/*.hpp <YOUR_DISIRED_LOCATION>
 #include "list.hpp"
 
 int main() {
-	List<int> myList = { 0, 2, 3 };
+	List<int> myList = { 0, 1, 3 };
 	myList.PushBack(4);
 	
 	List<int>::Iterator itr = myList.begin();
 	itr++;
-	myList.Insert(itr, 1);
+	myList.Insert(itr, 2);
 
 	for (const auto& num : myList) {
-		cout << num << endl;
+		std::cout << num << std::endl;
 		// Expected output:
 		// 0
 		// 1

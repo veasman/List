@@ -53,24 +53,24 @@ Returns an iterator of the first element (head) of the list.
 Returns an iterator of the last element (tail) in the list.
 
 ### Front()
-Returns the first element (head) of the list as type Node<T\>*.
+Returns the first element (head) of the list as type Node<ValueType\>*.
 
 ### Back()
-Returns the last element (tail) of the list as type Node<T\>*.
+Returns the last element (tail) of the list as type Node<ValueType\>*.
 
-### PushFront(T data)
-Uses `Insert(Iterator pos, T data)` to place a new node at the front of the list.
+### PushFront(ValueType data)
+Uses `Insert(Iterator pos, ValueType data)` to place a new node at the front of the list.
 
 ### PopFront()
 Removes the first element of the list, and returns the data from that element.
 
-### PushBack(T data)
-Uses `Insert(Iterator pos, T data)` to place a new node at the end of the list.
+### PushBack(ValueType data)
+Uses `Insert(Iterator pos, ValueType data)` to place a new node at the end of the list.
 
 ### PopBack()
 Removes the last element from the list, and returns the data from that element.
 
-### Insert(Iterator pos, T data)
+### Insert(Iterator pos, ValueType data)
 Inserts `data` at the position of `pos`
 
 ### Erase(Iterator pos)

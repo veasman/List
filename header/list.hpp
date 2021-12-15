@@ -65,10 +65,11 @@ public:
 template<class T>
 class List : private Node<T> {
 public:
-	using Iterator = ListIterator<T>;
+	using ValueType = T;
+	using Iterator = ListIterator<ValueType>;
 
 public:
-	List(std::initializer_list<T> init = {}) {
+	List(std::initializer_list<ValueType> init = {}) {
 		this->m_nHead = nullptr;
 		this->m_nTail = nullptr;
 		for (auto i : init) {
@@ -105,29 +106,29 @@ public:
 
 	/*--------------------------------------------------*/
 
-	Node<T>* Front() {
+	Node<ValueType>* Front() {
 		return this->m_nHead;
 	}
 
-	Node<T>* Back() {
+	Node<ValueType>* Back() {
 		return this->m_nTail;
 	}
 
 	/*--------------------------------------------------*/
 
-	void PushFront(T data) {
+	void PushFront(ValueType data) {
 		this->Insert(this->begin(), data);
 	}
 
-	T PopFront() {
+	ValueType PopFront() {
 		if (!this->m_nHead->m_nNext) return -1;
-		T data = this->m_nHead->m_tData;
+		ValueType data = this->m_nHead->m_tData;
 		this->m_nHead->m_nNext = this->m_nHead->m_nNext->m_nNext;
 		return data;
 	}
 
-	void PushBack(T data) {
-		Node<T>* node = new Node<T>(data);
+	void PushBack(ValueType data) {
+		Node<ValueType>* node = new Node<ValueType>(data);
 		if (!this->m_nHead || !this->m_nTail) {
 			this->m_nHead = node;
 			this->m_nTail = node;
@@ -136,11 +137,11 @@ public:
 		}
 	}
 
-	T PopBack() {
+	ValueType PopBack() {
 		if (!this->m_nTail->m_nPrev) return -1;
-		T data = this->m_nTail->m_tData;
+		ValueType data = this->m_nTail->m_tData;
 		// Create pointer to current tail to delete later
-		Node<T>* node = this->m_nTail;
+		Node<ValueType>* node = this->m_nTail;
 		// Tail needs to now point to the previous node
 		this->m_nTail = this->m_nTail->m_nPrev;
 		// And it should not point to any "next" node
@@ -150,8 +151,8 @@ public:
 		return data;
 	}
 
-	void Insert(Iterator pos, T data) {
-		Node<T>* node = new Node<T>(data);
+	void Insert(Iterator pos, ValueType data) {
+		Node<ValueType>* node = new Node<ValueType>(data);
 		if (pos == this->begin()) {
 			node->m_nNext = this->m_nHead;
 			this->m_nHead = node;
@@ -198,8 +199,8 @@ public:
 	// Custom stuff here?
 
 private:
-	Node<T>* m_nHead;
-	Node<T>* m_nTail;
+	Node<ValueType>* m_nHead;
+	Node<ValueType>* m_nTail;
 };
 
 #endif
